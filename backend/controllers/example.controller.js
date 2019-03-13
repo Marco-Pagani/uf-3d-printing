@@ -3,11 +3,10 @@ var mongoose = require('mongoose'),
     example = require('../models/example.model.js');
 
 exports.read = function(req, res) {
-  /* send back the decals as json from the request */
-  res.json(req.decal);
+  res.json(req.item);
 };
 
-// Returns all decal permissions
+// Returns all example data
 exports.list = function(req, res) {
  example.find({}).sort({}).exec((err, docs) =>{
     if(err) {
@@ -18,7 +17,7 @@ exports.list = function(req, res) {
   });
 };
 
-// Returns passed decals permissions
+// Returns passed example by name
 exports.byName = function(req, res, next, name) {
   example.find({'id': name}).exec(function(err, item) {
     if(err) {
