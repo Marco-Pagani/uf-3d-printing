@@ -1,10 +1,16 @@
-//This file holds any configuration variables we may need 
-//'config.js' is ignored by git to protect sensitive information, such as your database's username and password
-//copy this file's contents to another file 'config.js' and store your MongoLab uri there
+try {
+    var SECRETS = require('../secrets.json');
+    var CREDS = SECRETS.MONGO_CREDENTIALS;
+}
+catch(e) {
+    if (e.code !== "MODULE_NOT_FOUND")
+        throw e;
+    var CREDS = process.env.MONGO_CREDENTIALS;
+}
 
 module.exports = {
   db: {
-    uri: '', //place the URI of your mongo database here.
+    uri: 'mongodb://' + CREDS + '@ds019976.mlab.com:19976/uf-3d-printing', //place the URI of your mongo database here.
   }, 
   port: process.env.PORT || 8080
 };
