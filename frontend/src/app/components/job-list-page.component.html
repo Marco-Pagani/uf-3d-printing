@@ -1,0 +1,100 @@
+<div class=" mt-1">
+    <ul class="nav nav-tabs pl-5" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true" (click)="loadPending()">Pending</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="marston-tab" data-toggle="tab" href="#marston" role="tab" aria-controls="marston" aria-selected="false" (click)="loadMarston()">Marston Science Library</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="health-tab" data-toggle="tab" href="#health" role="tab" aria-controls="health" aria-selected="false" (click)="loadHealth()">Health Science Center</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="education-tab" data-toggle="tab" href="#education" role="tab" aria-controls="education" aria-selected="false" (click)="loadEducation()">Education Library</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'pickupLocation')">Status</th>
+                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('pickupLocation')">Pickup Location</th>
+                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'pickupLocation', 'status')">Name</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate', 'pickupLocation', 'status')">Entry Date</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate', 'pickupLocation', 'status')">Payment Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1"></i></td>
+                        <td style="text-align: left;">{{item.pickupLocation}}</td>
+                        <td style="text-align: left;">{{item.name}}</td>
+                        <td>{{item.entryDate | cdate}}</td>
+                        <td>{{item.paymentDate | cdate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane" id="marston" role="tabpanel" aria-labelledby="marston-tab">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'entryDate')">Status</th>
+                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'status', 'entryDate')">Name</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate')">Entry Date</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate')">Payment Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
+                        <td><i class="fas {{item.status | status}} centered"></i></td>
+                        <td style="text-align: left;">{{item.name}}</td>
+                        <td>{{item.entryDate | cdate}}</td>
+                        <td>{{item.paymentDate | cdate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane" id="health" role="tabpanel" aria-labelledby="health-tab">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'entryDate')">Status</th>
+                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'status', 'entryDate')">Name</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate')">Entry Date</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate')">Payment Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
+                        <td><i class="fas {{item.status | status}} centered"></i></td>
+                        <td style="text-align: left;">{{item.name}}</td>
+                        <td>{{item.entryDate | cdate}}</td>
+                        <td>{{item.paymentDate | cdate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane" id="education" role="tabpanel" aria-labelledby="education-tab">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'entryDate')">Status</th>
+                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'status', 'entryDate')">Name</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate')">Entry Date</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate')">Payment Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
+                        <td><i class="fas {{item.status | status}} centered"></i></td>
+                        <td style="text-align: left;">{{item.name}}</td>
+                        <td>{{item.entryDate | cdate}}</td>
+                        <td>{{item.paymentDate | cdate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
