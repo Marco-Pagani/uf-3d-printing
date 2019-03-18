@@ -1,5 +1,5 @@
 try {
-    var SECRETS = require('../secrets.json');
+    let SECRETS = require('../secrets.json');
     var CREDS = SECRETS.MONGO_CREDENTIALS;
 }
 catch(e) {
