@@ -15,12 +15,11 @@ export class JobListPageComponent implements OnInit {
 
     DEFAULT_SORT = 'status';
 
-    es;
     tableData = [];
     direction = 1;
     prevSort;
 
-    constructor(endPointService: EndpointService) { this.es = endPointService; }
+    constructor(private endPointService: EndpointService) { }
 
     ngOnInit() {
         // Load pending tab first
@@ -31,7 +30,7 @@ export class JobListPageComponent implements OnInit {
      * Loads the pending tab jobs
      */
     loadPending() {
-        this.tableData = this.es.getPendingJobs();
+        this.tableData = this.endPointService.getPendingJobs();
         this.resetSort();
         this.sortBy(this.DEFAULT_SORT, 'pickupLocation');
     }
@@ -40,7 +39,7 @@ export class JobListPageComponent implements OnInit {
      * Loads the Marston Library jobs
      */
     loadMarston() {
-        this.tableData = this.es.getMarstonJobs();
+        this.tableData = this.endPointService.getMarstonJobs();
         this.resetSort();
         this.sortBy(this.DEFAULT_SORT);
     }
@@ -49,7 +48,7 @@ export class JobListPageComponent implements OnInit {
      * Loads the Health Science Center jobs
      */
     loadHealth() {
-        this.tableData = this.es.getHealthJobs();
+        this.tableData = this.endPointService.getHealthJobs();
         this.resetSort();
         this.sortBy(this.DEFAULT_SORT);
     }
@@ -58,7 +57,7 @@ export class JobListPageComponent implements OnInit {
      * Loads the Education Library jobs
      */
     loadEducation() {
-        this.tableData = this.es.getEducationJobs();
+        this.tableData = this.endPointService.getEducationJobs();
         this.resetSort();
         this.sortBy(this.DEFAULT_SORT);
     }
