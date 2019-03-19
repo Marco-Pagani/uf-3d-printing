@@ -48,7 +48,7 @@
                 </thead>
                 <tbody>
                     <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
-                        <td><i class="fas {{item.status | status}} centered"></i></td>
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
                         <td>{{item.paymentDate | cdate}}</td>
@@ -68,7 +68,7 @@
                 </thead>
                 <tbody>
                     <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
-                        <td><i class="fas {{item.status | status}} centered"></i></td>
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
                         <td>{{item.paymentDate | cdate}}</td>
@@ -88,7 +88,7 @@
                 </thead>
                 <tbody>
                     <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
-                        <td><i class="fas {{item.status | status}} centered"></i></td>
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
                         <td>{{item.paymentDate | cdate}}</td>
