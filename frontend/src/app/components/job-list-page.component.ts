@@ -5,6 +5,8 @@ import { Helper } from '../helpers/helper';
 
 /**
  * Job List page
+ *
+ * TODO: Change payment date to last updated. Implement search functionality
  */
 @Component({
   selector: 'app-job-list-page',

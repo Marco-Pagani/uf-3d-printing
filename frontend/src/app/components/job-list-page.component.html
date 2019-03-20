@@ -22,16 +22,16 @@
                         <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('pickupLocation')">Pickup Location</th>
                         <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'pickupLocation', 'status')">Name</th>
                         <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate', 'pickupLocation', 'status')">Entry Date</th>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate', 'pickupLocation', 'status')">Payment Date</th>
+                        <!--<th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate', 'pickupLocation', 'status')">Payment Date</th>-->
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
-                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1"></i></td>
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
                         <td style="text-align: left;">{{item.pickupLocation}}</td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
-                        <td>{{item.paymentDate | cdate}}</td>
+                        <!--<td>{{item.paymentDate | cdate}}</td>-->
                     </tr>
                 </tbody>
             </table>
@@ -48,7 +48,7 @@
                 </thead>
                 <tbody>
                     <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
-                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1"></i></td>
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
                         <td>{{item.paymentDate | cdate}}</td>
@@ -68,7 +68,7 @@
                 </thead>
                 <tbody>
                     <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
-                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1"></i></td>
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
                         <td>{{item.paymentDate | cdate}}</td>
@@ -88,7 +88,7 @@
                 </thead>
                 <tbody>
                     <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
-                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1"></i></td>
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
                         <td>{{item.paymentDate | cdate}}</td>

@@ -27,21 +27,21 @@ export class EndpointService {
             paymentDate: ''
         }, {
             id: 678954321,
-            status: 0,
+            status: 1,
             pickupLocation: 'Marston Science Library',
             name: 'Bob Teller',
             entryDate: '2019-02-17 17:45:10',
             paymentDate: ''
         }, {
             id: 678954321,
-            status: 3,
+            status: 1,
             pickupLocation: 'Health Science Center',
             name: 'Kyle Pauler',
             entryDate: '2019-02-28 23:22:50',
             paymentDate: ''
         }, {
             id: 678954321,
-            status: 3,
+            status: 6,
             pickupLocation: 'Health Science Center',
             name: 'George Terry',
             entryDate: '2019-02-21 13:33:59',
@@ -53,7 +53,7 @@ export class EndpointService {
         // Example data
         return [{
             id: 928712372,
-            status: 1,
+            status: 2,
             pickupLocation: 'Marston Science Library',
             name: 'James Carver',
             entryDate: '2019-02-23 13:02:01',
@@ -67,11 +67,18 @@ export class EndpointService {
             paymentDate: '2019-01-15 09:20:00'
         }, {
             id: 212356748,
-            status: 1,
+            status: 5,
             pickupLocation: 'Marston Science Library',
             name: 'George Timothy',
             entryDate: '2019-01-15 13:09:10',
-            paymentDate: ''
+            paymentDate: '2019-01-16 08:10:30'
+        }, {
+            id: 212356748,
+            status: 4,
+            pickupLocation: 'Marston Science Library',
+            name: 'Albert Paul',
+            entryDate: '2019-01-25 14:20:10',
+            paymentDate: '2019-01-26 19:40:52'
         }];
     }
 
@@ -93,11 +100,11 @@ export class EndpointService {
             paymentDate: '2019-1-04 15:44:00'
         }, {
             id: 678954321,
-            status: 0,
+            status: 5,
             pickupLocation: 'Marston Science Library',
             name: 'Richard Banks',
             entryDate: '2019-01-17 19:45:10',
-            paymentDate: ''
+            paymentDate: '2019-01-20 12:54:10'
         }];
     }
 
@@ -109,17 +116,17 @@ export class EndpointService {
             pickupLocation: 'Education Library',
             name: 'Wes Snipes',
             entryDate: '2019-02-23 19:55:01',
-            paymentDate: ''
+            paymentDate: '2019-02-23 21:05:01'
         }, {
             id: 987654321,
-            status: 4,
+            status: 6,
             pickupLocation: 'Education Library',
             name: 'Jimmy Chun',
             entryDate: '2019-03-05 08:10:00',
             paymentDate: ''
         }, {
             id: 678954321,
-            status: 1,
+            status: 2,
             pickupLocation: 'Education Library',
             name: 'Laurell Pok',
             entryDate: '2019-02-14 17:45:10',
