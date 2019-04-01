@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 // Components
 import { JobListPageComponent } from './components/job-list-page.component';
+import { JobLRequestPageComponent } from './components/job-request-page.component';
 
 // Pipes
 import { DatePipe } from './pipes/date.pipe';
@@ -15,7 +16,8 @@ import { StatusPipe } from './pipes/status.pipe';
 const appRoutes: Routes = [
   { path: 'joblist', component: JobListPageComponent },
   { path: '', component: JobListPageComponent, pathMatch: 'full' },
-  { path: '**', component: JobListPageComponent, pathMatch: 'full' }
+  { path: '**', component: JobListPageComponent, pathMatch: 'full' },
+  { path: 'reuqest', component: JobRequestPageComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -23,6 +25,7 @@ const appRoutes: Routes = [
         AppComponent,
         DatePipe,
         JobListPageComponent,
+        JobRequestPageComponent,
         StatusPipe
     ],
     imports: [
