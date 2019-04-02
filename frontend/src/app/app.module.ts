@@ -18,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'joblist', component: JobListPageComponent },
   { path: 'request', component: JobRequestPageComponent },
   { path: 'details', component: DetailedInfoPageComponent },
+  { path: 'details/:id', component: DetailedInfoPageComponent },
   { path: '', component: JobListPageComponent, pathMatch: 'full' },
   { path: '**', component: JobListPageComponent, pathMatch: 'full' }
 ];
