@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 // Components
 import { JobListPageComponent } from './components/job-list-page.component';
 import { JobRequestPageComponent } from './components/job-request-page.component';
+import { DetailedInfoPageComponent } from './components/detailed-info-page.component';
 
 // Pipes
 import { DatePipe } from './pipes/date.pipe';
@@ -16,6 +17,7 @@ import { StatusPipe } from './pipes/status.pipe';
 const appRoutes: Routes = [
   { path: 'joblist', component: JobListPageComponent },
   { path: 'request', component: JobRequestPageComponent },
+  { path: 'details', component: DetailedInfoPageComponent },
   { path: '', component: JobListPageComponent, pathMatch: 'full' },
   { path: '**', component: JobListPageComponent, pathMatch: 'full' }
 ];
@@ -24,6 +26,7 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent,
         DatePipe,
+        DetailedInfoPageComponent,
         JobListPageComponent,
         JobRequestPageComponent,
         StatusPipe
