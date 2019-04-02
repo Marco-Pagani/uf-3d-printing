@@ -24,16 +24,15 @@ module.exports.init = function() {
   // Body parsing middleware 
   app.use(bodyParser.json());
   
-  /**TODO
-  Serve static files */
   app.use('/', express.static(path.resolve(__clientdir)));
   
-  app.get('/', function(req, res) {
-    res.sendFile('/index.html');
-  });
-
   // Example endpoint
   app.use('/api/example', exampleRouter);
+  
+  // Catch all other routes and return the index file
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(path.resolve(__clientdir), '/index.html'));
+  });
 
   /**TODO 
   Go to homepage for all routes not specified */ 
