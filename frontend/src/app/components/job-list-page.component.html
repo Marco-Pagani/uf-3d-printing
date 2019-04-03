@@ -18,10 +18,42 @@
             <table class="table table-striped align-middle">
                 <thead>
                     <tr>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'pickupLocation')">Status</th>
-                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('pickupLocation')">Pickup Location</th>
-                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'pickupLocation', 'status')">Name</th>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate', 'pickupLocation', 'status')">Entry Date</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'entryDate')">
+                            Status
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'status'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'status'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'status'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'status'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('pickupLocation')">
+                            Pickup Location
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'pickupLocation'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'pickupLocation'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'pickupLocation'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'pickupLocation'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'status', 'entryDate')">
+                            Name
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'name'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'name'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'name'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'name'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate')">
+                            Entry Date
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'entryDate'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'entryDate'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'entryDate'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'entryDate'"></i>
+                            </a>
+                        </th>
                         <!--<th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate', 'pickupLocation', 'status')">Payment Date</th>-->
                     </tr>
                 </thead>
@@ -40,10 +72,42 @@
             <table class="table table-striped align-middle">
                 <thead>
                     <tr>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'entryDate')">Status</th>
-                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'status', 'entryDate')">Name</th>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate')">Entry Date</th>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate')">Payment Date</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'entryDate')">
+                            Status
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'status'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'status'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'status'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'status'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'status', 'entryDate')">
+                            Name
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'name'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'name'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'name'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'name'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate')">
+                            Entry Date
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'entryDate'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'entryDate'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'entryDate'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'entryDate'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate')">
+                            Payment Date
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'paymentDate'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'paymentDate'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'paymentDate'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'paymentDate'"></i>
+                            </a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,10 +124,42 @@
             <table class="table table-striped align-middle">
                 <thead>
                     <tr>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'entryDate')">Status</th>
-                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'status', 'entryDate')">Name</th>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate')">Entry Date</th>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate')">Payment Date</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'entryDate')">
+                            Status
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'status'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'status'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'status'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'status'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'status', 'entryDate')">
+                            Name
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'name'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'name'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'name'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'name'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate')">
+                            Entry Date
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'entryDate'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'entryDate'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'entryDate'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'entryDate'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate')">
+                            Payment Date
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'paymentDate'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'paymentDate'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'paymentDate'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'paymentDate'"></i>
+                            </a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,10 +176,42 @@
             <table class="table table-striped align-middle">
                 <thead>
                     <tr>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'entryDate')">Status</th>
-                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'status', 'entryDate')">Name</th>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate')">Entry Date</th>
-                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate')">Payment Date</th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('status', 'entryDate')">
+                            Status
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'status'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'status'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'status'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'status'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'status', 'entryDate')">
+                            Name
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'name'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'name'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'name'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'name'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('entryDate')">
+                            Entry Date
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'entryDate'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'entryDate'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'entryDate'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'entryDate'"></i>
+                            </a>
+                        </th>
+                        <th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate')">
+                            Payment Date
+                            <a style="font-size:20px;position:absolute;padding:3px;">
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'paymentDate'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'paymentDate'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'paymentDate'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'paymentDate'"></i>
+                            </a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
