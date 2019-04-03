@@ -26,14 +26,14 @@ export class EndpointService {
             entryDate: '2019-01-10 08:10:00',
             paymentDate: ''
         }, {
-            id: 678954321,
+            id: 219384782,
             status: 1,
             pickupLocation: 'Marston Science Library',
             name: 'Bob Teller',
             entryDate: '2019-02-17 17:45:10',
             paymentDate: ''
         }, {
-            id: 678954321,
+            id: 123842398,
             status: 1,
             pickupLocation: 'Health Science Center',
             name: 'Kyle Pauler',
@@ -59,7 +59,7 @@ export class EndpointService {
             entryDate: '2019-02-23 13:02:01',
             paymentDate: ''
         }, {
-            id: 928371623,
+            id: 812394884,
             status: 3,
             pickupLocation: 'Marston Science Library',
             name: 'Figgus Archer',
@@ -73,7 +73,7 @@ export class EndpointService {
             entryDate: '2019-01-15 13:09:10',
             paymentDate: '2019-01-16 08:10:30'
         }, {
-            id: 212356748,
+            id: 123492000,
             status: 4,
             pickupLocation: 'Marston Science Library',
             name: 'Albert Paul',
@@ -92,14 +92,14 @@ export class EndpointService {
             entryDate: '2018-12-24 11:01:01',
             paymentDate: ''
         }, {
-            id: 987654321,
+            id: 218349873,
             status: 3,
             pickupLocation: 'Health Science Center',
             name: 'Salty Shell',
             entryDate: '2018-12-29 06:14:00',
             paymentDate: '2019-1-04 15:44:00'
         }, {
-            id: 678954321,
+            id: 727342477,
             status: 5,
             pickupLocation: 'Marston Science Library',
             name: 'Richard Banks',
@@ -111,21 +111,21 @@ export class EndpointService {
     getEducationJobs() {
         // Example data
         return [{
-            id: 123456789,
+            id: 728349949,
             status: 4,
             pickupLocation: 'Education Library',
             name: 'Wes Snipes',
             entryDate: '2019-02-23 19:55:01',
             paymentDate: '2019-02-23 21:05:01'
         }, {
-            id: 987654321,
+            id: 293478989,
             status: 6,
             pickupLocation: 'Education Library',
             name: 'Jimmy Chun',
             entryDate: '2019-03-05 08:10:00',
             paymentDate: ''
         }, {
-            id: 678954321,
+            id: 773272778,
             status: 2,
             pickupLocation: 'Education Library',
             name: 'Laurell Pok',

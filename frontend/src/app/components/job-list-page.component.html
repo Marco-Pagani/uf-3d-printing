@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
+                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/details/{{item.id}}">
                         <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
                         <td style="text-align: left;">{{item.pickupLocation}}</td>
                         <td style="text-align: left;">{{item.name}}</td>
@@ -47,7 +47,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
+                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/details/{{item.id}}">
                         <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
@@ -67,7 +67,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
+                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/details/{{item.id}}">
                         <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
@@ -87,7 +87,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/job/{{item.id}}">
+                    <tr class="clickable" *ngFor="let item of tableData" routerLink="/details/{{item.id}}">
                         <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
