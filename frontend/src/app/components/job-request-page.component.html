@@ -1,107 +1,152 @@
-<div class=" mt-1">
+<div class="mt-1">
   <div class="container-fluid text-center">
     <h1>Submit 3D Print</h1>
     <div class="row content">
       <div class="col-sm-6 text-left">
-        <form>
+        <form data-toggle="validator" >
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputEmail4">First Name</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="First">
+                <label for="inputfname">First Name</label>
+                <input type="text" class="form-control" id="fname" placeholder="First">
             </div>
             <div class="form-group col-md-6">
-              <label for="inputPassword4">Last Name</label>
-              <input type="password" class="form-control" id="inputPassword4" placeholder="Last">
+                <label for="inputlname">Last Name</label>
+                <input type="text" class="form-control" id="lname" placeholder="Last">
             </div>
-          </div>
-          <div class="form-row">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPnumber">Phone Number</label>
+                    <input type="tel" class="form-control" id="pnumber" placeholder="XXX-XXX-XXXX" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                </div>
+            </div>
             <div class="form-group col-md-6">
-              <label for="inputEmail4">Email</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputPassword4">Phone Number</label>
-              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-            </div>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputState">Affiliation</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>Student</option>
-              <option>Staff</option>
-              <option>Faculty</option>
+                <label for="inputAffiliation">Affiliation</label>
+                <select id="affiliation" class="form-control">
+                <option selected>Choose...</option>
+                <option>Student</option>
+                <option>Staff</option>
+                <option>Faculty</option>
             </select>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputState">Maker Location</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>Marston Science Library</option>
-              <option>Health Science Center</option>
-              <option>Education Library</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                I agree to the Terms
-              </label>
             </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group col-md-6">
+                <label for="inputPreferredLoc">Maker Location</label>
+                <select id="makerLoc" class="form-control">
+                <option selected>Choose...</option>
+                <option>Marston Science Library</option>
+                <option>Health Science Center</option>
+                <option>Education Library</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    I agree to the Terms
+                </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Complete Request</button>
         </form>
-      </div>
-      <div class="col-sm-6 text-left">
-        <div class="form-group">
-          <label for="inputEmail4">File Name</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="Name">
         </div>
-        <div class="form-group ">
-          <label for="inputState">Quantity</label>
-          <select id="inputState" class="form-control col-md-4">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-        </div>
-        <div class="form-group ">
-          <label for="inputState">First Color Choice</label>
-          <select id="inputState" class="form-control col-md-4">
-            <option value="1">Red</option>
-            <option value="2">Green</option>
-            <option value="3">Blue</option>
-          </select>
-        </div>
-        <div class="form-group ">
-          <label for="inputState">Second Color Choice</label>
-          <select id="inputState" class="form-control col-xs-3">
-            <option value="1">Red</option>
-            <option value="2">Green</option>
-            <option value="3">Blue</option>
-          </select>
-        </div>
-        <div class="form-group ">
-          <label for="inputState">Second Color Choice</label>
-          <select id="inputState" class="form-control col-md-3">
-            <option value="1">Red</option>
-            <option value="2">Green</option>
-            <option value="3">Blue</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Special Requests</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
+        <div class="accordion col-6 text-left" id="accordionForm">
+            <div class="card" *ngFor="let file of files; let i = index">
+                <div class="card-header" id="headingFiles{{i}}">
+                    <h2 class="mb-0">
+                        <button class="btn" type="button" data-toggle="collapse" attr.data-target="#collapse{{i}}" aria-expanded="true" attr.aria-controls="collapse{{i}}">
+                            {{file.name}}
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapse{{i}}" class="collapse" attr.aria-labelledby="headingFiles{{i}}" data-parent="#accordionForm">
+                    <div class="card-body">
+                        <div class="card-title row">
+                            <h5 class="col-8">{{file.name}} <a class="text-secondary">({{file.dimensions.x}}mm x {{file.dimensions.y}}mm x {{file.dimensions.z}}mm)</a></h5>
+                            <div class="col-4">
+                                <a href="#" class="btn btn-primary">Download</a>
+                            </div>
+                        </div>
+                        <img src="{{file.img}}" class="card-img-top" alt="...">
+                        <div class="card-text">
+                            <ul class="list-group" *ngIf="file">
+                                <li class="list-group-item"><b>Quantity:</b> {{file.quantity}}</li>
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <b class="col-md-4 col-lg-2 pr-0">Color:</b>
+                                        <div class="{{color}} col-1 mr-1" style="width:25px;height:25px;border-radius:8px;display:inline-block;" title="{{color}}" *ngFor="let color of file.color">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item"><b>Details:</b> {{file.extra}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingForm">
+                    <h2 class="mb-0">
+                        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true" aria-controls="collapseForm">
+                            Add another file...
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseForm" class="collapse show" aria-labelledby="headingForm" data-parent="#accordionForm">
+                    
+                    <div class="card-body">
+                        <div class="card-title row">
+                        </div>
+                        <div class="col-sm-6 text-left">
+                            <form name="fileSubmit">
+                                <div class="form-group">
+                                    <label for="filename">File Name</label><br>
+                                    <button class="btn btn-secondary">Choose File...</button>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="quantitySelect">Quantity<a class="text-danger" *ngIf="fadd && !quantity">*</a></label>
+                                    <select id="quantity" [(ngModel)]="quantity" name="quantity" class="form-control col-md-4" [class.border-danger]="fadd && !quantity" required>
+                                        <option *ngFor="let n of numbers" [value]="n">{{n}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="color">First Color Choice<a class="text-danger" *ngIf="fadd && !color1">*</a></label>
+                                    <select id="color1" [(ngModel)]="color1" name="color1" class="form-control col-4" [class.border-danger]="fadd && !color1" required>
+                                        <option [value]="'red'">Red</option>
+                                        <option [value]="'green'">Green</option>
+                                        <option [value]="'blue'">Blue</option>
+                                    </select>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="color">Second Color Choice<a class="text-danger" *ngIf="fadd && !color2">*</a></label>
+                                    <select id="color2" [(ngModel)]="color2" name="color2" class="form-control col-4" [class.border-danger]="fadd && !color2" required>
+                                        <option [value]="'red'">Red</option>
+                                        <option [value]="'green'">Green</option>
+                                        <option [value]="'blue'">Blue</option>
+                                    </select>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="color">Third Color Choice<a class="text-danger" *ngIf="fadd && !color3">*</a></label>
+                                    <select id="color3" [(ngModel)]="color3" name="color3" class="form-control col-4" [class.border-danger]="fadd && !color3" required>
+                                        <option [value]="'red'">Red</option>
+                                        <option [value]="'green'">Green</option>
+                                        <option [value]="'blue'">Blue</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ExtraInfo">Special Requests</label>
+                                    <textarea class="form-control" id="details" name="details" [(ngModel)]="details" rows="3"></textarea>
+                                </div>
 
-        <button type="submit" class="btn btn-info">Add Another</button>
-      </div>
+                                <button type="submit" class="btn btn-primary" (click)="addFile()">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div>
-    <footer class="container-fluid text-center">
-      <p>Sitemap | Help | Etc</p>
-    </footer>
-  </div>
 </div>
