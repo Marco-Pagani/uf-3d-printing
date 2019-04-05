@@ -2,6 +2,14 @@
 ## Backend/Frontend Deployment
 Automated testing will occur for any branch pushed to the repository. Automatic deployment to the production server on Heroku occurs on changes to master. To deploy your changes, create a PR for your branch to master. After test scripts are run and passing, the site will be deployed once the changes are merged into master.
 
+## Front/Backend Development
+
+Terminal 1
+`npm run devbuild`
+
+Terminal 2
+`npm run start`
+
 ## Backend Development
 `cd backend`
 

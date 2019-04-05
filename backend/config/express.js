@@ -3,8 +3,8 @@ var path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    config = require('./config'),
-    exampleRouter = require('../routes/example.routes');
+    config = require('./config');
+var requestRouter = require('../routes/queue.routes');
 const cors = require('cors');
 
 var __clientdir = './../frontend/dist/frontend/';
@@ -24,16 +24,14 @@ module.exports.init = function() {
   // Body parsing middleware 
   app.use(bodyParser.json());
   
-  /**TODO
-  Serve static files */
   app.use('/', express.static(path.resolve(__clientdir)));
   
-  app.get('/', function(req, res) {
-    res.sendFile('/index.html');
+  app.use('/api/jobs', requestRouter);
+  
+  // Catch all other routes and return the index file
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(path.resolve(__clientdir), '/index.html'));
   });
-
-  // Example endpoint
-  app.use('/api/example', exampleRouter);
 
   /**TODO 
   Go to homepage for all routes not specified */ 
