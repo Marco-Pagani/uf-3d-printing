@@ -17,7 +17,7 @@ export class JobListPageComponent implements OnInit {
 
     DEFAULT_SORT = 'status';
 
-    tableData = [];
+    tableData: Object;
     direction = 1;
     prevSort;
 
@@ -32,36 +32,64 @@ export class JobListPageComponent implements OnInit {
      * Loads the pending tab jobs
      */
     loadPending() {
-        this.tableData = this.endPointService.getPendingJobs();
-        this.resetSort();
-        this.sortBy(this.DEFAULT_SORT, 'pickupLocation');
+        this.endPointService.getPendingJobs().subscribe(
+            data => {
+                this.tableData = data;
+                this.resetSort();
+                this.sortBy(this.DEFAULT_SORT, 'pickupLocation');
+            },
+            error => {
+                console.log(error);
+            }
+        );
     }
 
     /**
      * Loads the Marston Library jobs
      */
     loadMarston() {
-        this.tableData = this.endPointService.getMarstonJobs();
-        this.resetSort();
-        this.sortBy(this.DEFAULT_SORT);
+        this.endPointService.getMarstonJobs().subscribe(
+            data => {
+                this.tableData = data;
+                this.resetSort();
+                this.sortBy(this.DEFAULT_SORT);
+            },
+            error => {
+                console.log(error);
+            }
+        );
     }
 
     /**
      * Loads the Health Science Center jobs
      */
     loadHealth() {
-        this.tableData = this.endPointService.getHealthJobs();
-        this.resetSort();
-        this.sortBy(this.DEFAULT_SORT);
+        this.endPointService.getHealthJobs().subscribe(
+            data => {
+                this.tableData = data;
+                this.resetSort();
+                this.sortBy(this.DEFAULT_SORT);
+            },
+            error => {
+                console.log(error);
+            }
+        );
     }
 
     /**
      * Loads the Education Library jobs
      */
     loadEducation() {
-        this.tableData = this.endPointService.getEducationJobs();
-        this.resetSort();
-        this.sortBy(this.DEFAULT_SORT);
+        this.endPointService.getEducationJobs().subscribe(
+            data => {
+                this.tableData = data;
+                this.resetSort();
+                this.sortBy(this.DEFAULT_SORT);
+            },
+            error => {
+                console.log(error);
+            }
+        );
     }
 
     /**

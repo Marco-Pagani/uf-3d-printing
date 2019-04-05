@@ -3,8 +3,8 @@ var path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    config = require('./config'),
-    exampleRouter = require('../routes/example.routes');
+    config = require('./config');
+var requestRouter = require('../routes/queue.routes');
 const cors = require('cors');
 
 var __clientdir = './../frontend/dist/frontend/';
@@ -26,8 +26,7 @@ module.exports.init = function() {
   
   app.use('/', express.static(path.resolve(__clientdir)));
   
-  // Example endpoint
-  app.use('/api/example', exampleRouter);
+  app.use('/api/jobs', requestRouter);
   
   // Catch all other routes and return the index file
   app.get('*', (req, res) => {

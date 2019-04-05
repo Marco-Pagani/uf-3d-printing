@@ -3,19 +3,31 @@
 var mongoose = require('mongoose'), 
 Schema = mongoose.Schema;
 
+var ObjectId = mongoose.Schema.Types.ObjectId;
+
 var queueSchema = new Schema({
+    "_id": ObjectId,
     "name": String,
     "email": String,
     "phone": {
-    type: String,
-    optional: ''
+        type: String,
+        optional: true
     },
     "affiliation" : String,
     "major": String,
     "forACourse" : Boolean,
     "photoAllow": Boolean,
-    } 
-    );
+    "status": Number,
+    "pickupLocation": {
+        type: String,
+        optional: true
+    },
+    "entryDate": String,
+    "paymentDate": String
+    }, {
+        collection: "Queue"
+    }
+);
 
 /* create a 'pre' function that adds the updated_at (and created_at if not already there) property */
 queueSchema.pre('save', function(next) {
@@ -23,10 +35,10 @@ queueSchema.pre('save', function(next) {
     this.updated_at = currentTime;
     if(!this.created_at)
     {
-    this.created_at = currentTime;
+        this.created_at = currentTime;
     }
     next();
-    });
+});
 
 
 var queue = mongoose.model('queue', queueSchema);

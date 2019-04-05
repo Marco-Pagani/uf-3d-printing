@@ -11,21 +11,29 @@ var q = require('../controllers/queue.controller.js'),
  */
 router.route('/')
   .get(q.list)
-  .post(q.create)
-  .post(q.byName);
-  
+  .post(q.create);
+
+router.route('/pending')
+  .get(q.listpending);
+
+router.route('/marston')
+  .get(q.listmarston);
+
+router.route('/health')
+  .get(q.listhealth);
+
+router.route('/education')
+  .get(q.listeducation);  
 
 /*
   The ':' specifies a URL parameter. 
  */
-router.route('/:qId')
+router.route('/:id')
   .get(q.read)
-
-  //Admin Routes
   .put(q.update)
   .delete(q.delete);
 
 
-router.param('qId', q.byName);
+router.param('id', q.findById);
 
 module.exports = router;
