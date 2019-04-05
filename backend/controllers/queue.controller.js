@@ -1,7 +1,8 @@
 
 /* Dependencies */
 var mongoose = require('mongoose'), 
-    queue = require('../models/queue.model.js');
+    queue = require('../models/queue.model.js'),
+    file = require('../models/file.model.js');
 
 exports.read = function(req, res) {
   res.json(req.request);
@@ -19,9 +20,25 @@ exports.list = function(req, res) {
     });
 };
 
+exports.listfiles = async function(req, res) {
+    request = req.request.toObject(); 
+    files = request.files;
+    files = await Promise.all(files.map((ele) => {
+        return mongoose.Types.ObjectId(ele);
+    }));
+    file.find({ '_id': { $in: files } }).exec((err, docs) => {
+        if(err) {
+            console.log(err);
+            res.status(400).send(err);
+        } else {
+            res.json(docs);
+        }
+    });
+}
+
 // Returns all queue data that has not been picked up by employee
 exports.listpending = function(req, res) {
-    queue.find({'pending': true}).sort({}).exec((err, docs) =>{
+    queue.find({'makerLoc': ''}).sort({}).exec((err, docs) =>{
         if(err) {
             console.log(err);
             res.status(400).send(err);
@@ -33,7 +50,7 @@ exports.listpending = function(req, res) {
 
 // Returns all queue data that has not been picked up by employee
 exports.listmarston = function(req, res) {
-    queue.find({'pickupLocation': 'Marston Science Library'}).sort({}).exec((err, docs) =>{
+    queue.find({'makerLoc': 'Marston Science Library'}).sort({}).exec((err, docs) =>{
         if(err) {
             console.log(err);
             res.status(400).send(err);
@@ -45,7 +62,7 @@ exports.listmarston = function(req, res) {
 
 // Returns all queue data that has not been picked up by employee
 exports.listhealth = function(req, res) {
-    queue.find({'pickupLocation': 'Health Science Center'}).sort({}).exec((err, docs) =>{
+    queue.find({'makerLoc': 'Health Science Center'}).sort({}).exec((err, docs) =>{
         if(err) {
             console.log(err);
             res.status(400).send(err);
@@ -57,7 +74,7 @@ exports.listhealth = function(req, res) {
 
 // Returns all queue data that has not been picked up by employee
 exports.listeducation = function(req, res) {
-    queue.find({'pickupLocation': 'Education Library'}).sort({}).exec((err, docs) =>{
+    queue.find({'makerLoc': 'Education Library'}).sort({}).exec((err, docs) =>{
         if(err) {
             console.log(err);
             res.status(400).send(err);

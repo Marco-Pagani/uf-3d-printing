@@ -1,14 +1,23 @@
 export class Job {
-    _id: string;
+    _id: String;
+    status: Number;
     name: String;
     email: String;
-    phone?: string;
-    affiliation: String;
-    major: String;
-    forACourse: Boolean;
-    photoAllow: Boolean;
-    status: Number;
-    pickupLocation: String;
+    phone?: String;
+    affiliation: {
+        kind: String;
+        major: String;
+        department: String;
+        course: Boolean;
+        coursecode: String
+    };
+    publicity: Boolean;
+    locationPref: String;
+    makerLoc?: String;
+    cost?: Number;
     entryDate: String;
     paymentDate?: String;
+    updateDate: String;
+    staffNotes?: String;
+    staffName?: String;
 }

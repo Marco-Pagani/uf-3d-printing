@@ -27,13 +27,13 @@
                                 <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'status'"></i>
                             </a>
                         </th>
-                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('pickupLocation')">
+                        <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('makerLoc')">
                             Pickup Location
                             <a style="font-size:20px;position:absolute;padding:3px;">
-                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'pickupLocation'"></i>
-                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'pickupLocation'"></i>
-                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'pickupLocation'"></i>
-                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'pickupLocation'"></i>
+                                <i class="fas fa-sort-up" style="position:absolute" *ngIf="direction == -1 && prevSort == 'makerLoc'"></i>
+                                <i class="fas fa-sort-down" style="position:absolute" *ngIf="direction == 1 && prevSort == 'makerLoc'"></i>
+                                <i class="fas fa-sort-up text-black-50" style="position:absolute" *ngIf="direction == 1 || prevSort != 'makerLoc'"></i>
+                                <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'makerLoc'"></i>
                             </a>
                         </th>
                         <th scope="col" class="clickable" style="text-align: left;" (click)="sortBy('name', 'status', 'entryDate')">
@@ -54,13 +54,13 @@
                                 <i class="fas fa-sort-down text-black-50" style="position:absolute" *ngIf="direction == -1 || prevSort != 'entryDate'"></i>
                             </a>
                         </th>
-                        <!--<th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate', 'pickupLocation', 'status')">Payment Date</th>-->
+                        <!--<th scope="col" class="clickable" style="text-align: center;" (click)="sortBy('paymentDate', 'makerLoc', 'status')">Payment Date</th>-->
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="clickable" *ngFor="let item of tableData" routerLink="/details/{{item._id}}">
-                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
-                        <td style="text-align: left;">{{item.pickupLocation}}</td>
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:'p'}}"></i></td>
+                        <td style="text-align: left;">{{item.makerLoc}}</td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
                         <!--<td>{{item.paymentDate | cdate}}</td>-->
@@ -112,7 +112,7 @@
                 </thead>
                 <tbody>
                     <tr class="clickable" *ngFor="let item of tableData" routerLink="/details/{{item._id}}">
-                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:'p'}}"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
                         <td>{{item.paymentDate | cdate}}</td>
@@ -164,7 +164,7 @@
                 </thead>
                 <tbody>
                     <tr class="clickable" *ngFor="let item of tableData" routerLink="/details/{{item._id}}">
-                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:'p'}}"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
                         <td>{{item.paymentDate | cdate}}</td>
@@ -216,7 +216,7 @@
                 </thead>
                 <tbody>
                     <tr class="clickable" *ngFor="let item of tableData" routerLink="/details/{{item._id}}">
-                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:true}}"></i></td>
+                        <td><i class="fas fa-lg {{item.status | status}} centered pt-1" data-toggle="tooltip" data-placement="top" title="{{item.status | status:'p'}}"></i></td>
                         <td style="text-align: left;">{{item.name}}</td>
                         <td>{{item.entryDate | cdate}}</td>
                         <td>{{item.paymentDate | cdate}}</td>

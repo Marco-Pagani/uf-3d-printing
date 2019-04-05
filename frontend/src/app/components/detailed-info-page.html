@@ -1,123 +1,88 @@
-<!DOCTYPE html>
-<html>
+<div class="container">
+    <h1 class="pt-3">Job #: {{jobId}} </h1>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <h3>Client Information</h3>
+            <div class="jumbotron">
+                <ul class="list-group" *ngIf="job">
+                    <li class="list-group-item"><b>Entry Date:</b> {{job.entryDate | cdate}}</li>
+                    <li class="list-group-item"><b>Name:</b> {{job.name}}</li>
+                    <li class="list-group-item"><b>Email:</b> {{job.email}}</li>
+                    <li class="list-group-item"><b>Phone:</b> {{job.phone}}</li>
+                    <li class="list-group-item" *ngIf="job.affiliation">
+                        <b>Affiliation:</b> {{job.affiliation.kind}}
+                        <br>
+                        <a class="pl-3"><b>Major:</b> {{job.affiliation.major}}</a>
+                        <br>
+                        <a class="pl-3"><b>Department:</b> {{job.affiliation.department}}</a>
+                        <br>
+                        <a class="pl-3" *ngIf="job.affiliation.course"><b>Course:</b> {{job.affiliation.coursecode}}</a>
+                    </li>
+                    <li class="list-group-item"><b>Pickup Location:</b> {{job.makerLoc}}</li>
+                    <li class="list-group-item"><b>Can be used for publicity?</b> {{job.publicity ? 'Yes' : 'No'}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <h3>Job Status Information</h3>
+            <div class="jumbotron">
+                <ul class="list-group" *ngIf="job">
+                    <li class="list-group-item {{job.status | status:'l'}}">Job Status: {{job.status | status:'p'}}</li>
+                    <li class="list-group-item"><b>Last Updated:</b> {{job.updateDate | cdate}}</li>
+                    <li class="list-group-item"><b>Pricing Information:</b> <a class="{{job.cost ? '' : 'text-danger'}}">{{job.cost ? ' $' + job.cost : ' No price set'}}</a></li>
+                    <li class="list-group-item"><b>Staffer:</b> {{job.staffName}}</li>
+                    <li class="list-group-item"><b>Staff Notes:</b> {{job.staffNotes}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h3 class="col-3">Files</h3>
+        <div class="col-7"></div>
+        <span class="col-2">
+            <button type="button" class="btn btn-primary align-right" href="#">Download All</button>
+        </span>
+    </div>
+    <hr>
 
-<head>
-    <meta charset=utf-8>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/detailed-info.css" type="text/css">
-
-    <title>Job #: {{jobId}} </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
-
-<body>
     <div class="container">
-        <header>
-            <h1>Job #: {{jobId}} </h1>
-        </header>
-        <hr>
-        <div class="row">
-            <div class="col">
-                <h3>Client Information</h3>
-                <div class="jumbotron">
-                    <ul class="list-group">
-                        <li class="list-group-item">Name: </li>
-                        <li class="list-group-item">Email: </li>
-                        <li class="list-group-item">Phone: </li>
-                        <li class="list-group-item">Other fields idk</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col">
-                <h3>Job Status Information</h3>
-                <div class="jumbotron">
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-danger">Job Status: PENDING PAYMENT</li>
-                        <li class="list-group-item">Last Updated: </li>
-                        <li class="list-group-item">Pricing Information</li>
-                    </ul>
+        <div class="row" *ngIf="files">
+            <div class="col" *ngFor="let file of files">
+                <div class="card" style="">
+                    <div class="card-body">
+                        <div class="card-title row">
+                            <h5 class="col-8">{{file.name}} <a class="text-secondary">({{file.dimensions.x}}mm x {{file.dimensions.y}}mm x {{file.dimensions.z}}mm)</a></h5>
+                            <div class="col-4">
+                                <a href="#" class="btn btn-primary">Download</a>
+                            </div>
+                        </div>
+                        <img src="{{file.img}}" class="card-img-top" alt="...">
+                        <div class="card-text">
+                            <ul class="list-group" *ngIf="file">
+                                <li class="list-group-item"><b>Quantity:</b> {{file.quantity}}</li>
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <b class="col-md-4 col-lg-2 pr-0">Color:</b>
+                                        <div class="{{color}} col-1 mr-1" style="width:25px;height:25px;border-radius:8px;display:inline-block;" title="{{color}}" *ngFor="let color of file.color">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item"><b>Details:</b> {{file.extra}}</li>
+                                <li class="list-group-item"><b>Weight:</b> {{file.weight}} g</li>
+                                <li class="list-group-item"><b>Print Time:</b> {{file.printTime}} minutes</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <h3>Files<span><button type="button" class="btn btn-primary">Download All</button></span></h3>
-        <hr>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./example.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Submitted File Name Goes Here</h5>
-                            <p class="card-text">Either put the information here or show it via the button below (remove
-                                button if doing it the first way)</p>
-                            <a href="#" class="btn btn-primary">Info</a>
-                            <a href="#" class="btn btn-primary">Download</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./example.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Submitted File Name Goes Here</h5>
-                            <p class="card-text">Either put the information here or show it via the button below (remove
-                                button if doing it the first way)</p>
-                            <a href="#" class="btn btn-primary">Info</a>
-                            <a href="#" class="btn btn-primary">Download</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./example.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Submitted File Name Goes Here</h5>
-                            <p class="card-text">Either put the information here or show it via the button below (remove
-                                button if doing it the first way)</p>
-                            <a href="#" class="btn btn-primary">Info</a>
-                            <a href="#" class="btn btn-primary">Download</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./example.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Submitted File Name Goes Here</h5>
-                            <p class="card-text">Either put the information here or show it via the button below (remove
-                                button if doing it the first way)</p>
-                            <a href="#" class="btn btn-primary">Info</a>
-                            <a href="#" class="btn btn-primary">Download</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                </div>
-            </div>
-        </div>
+    </div>
+    <div class="pt-3 pb-5" *ngIf="job">
         <h3>Notes</h3>
         <hr>
         <div class="container">
-            <p>Store any other additional information here, this part can be removed if not needed</p>
+            <p>{{job.notes}}</p>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-</body>
-
-</html>
+</div>

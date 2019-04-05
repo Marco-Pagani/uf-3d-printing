@@ -32,6 +32,7 @@ export class JobListPageComponent implements OnInit {
      * Loads the pending tab jobs
      */
     loadPending() {
+        this.tableData = [];
         this.endPointService.getPendingJobs().subscribe(
             data => {
                 this.tableData = data;
@@ -48,6 +49,7 @@ export class JobListPageComponent implements OnInit {
      * Loads the Marston Library jobs
      */
     loadMarston() {
+        this.tableData = [];
         this.endPointService.getMarstonJobs().subscribe(
             data => {
                 this.tableData = data;
@@ -64,6 +66,7 @@ export class JobListPageComponent implements OnInit {
      * Loads the Health Science Center jobs
      */
     loadHealth() {
+        this.tableData = [];
         this.endPointService.getHealthJobs().subscribe(
             data => {
                 this.tableData = data;
@@ -80,6 +83,7 @@ export class JobListPageComponent implements OnInit {
      * Loads the Education Library jobs
      */
     loadEducation() {
+        this.tableData = [];
         this.endPointService.getEducationJobs().subscribe(
             data => {
                 this.tableData = data;

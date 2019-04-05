@@ -6,24 +6,33 @@ Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var queueSchema = new Schema({
-    "_id": ObjectId,
-    "name": String,
-    "email": String,
-    "phone": {
-        type: String,
-        optional: true
-    },
-    "affiliation" : String,
-    "major": String,
-    "forACourse" : Boolean,
-    "photoAllow": Boolean,
-    "status": Number,
-    "pickupLocation": {
-        type: String,
-        optional: true
-    },
-    "entryDate": String,
-    "paymentDate": String
+        "_id": ObjectId,
+        "status": Number,
+        "name": String,
+        "email": String,
+        "phone": {
+            type: String,
+            optional: true
+        },
+        "affiliation" : {
+            "kind": String,
+            "major": String,
+            "department": String,
+            "course": Boolean,
+            "coursecode": String
+        },
+        "publicity": Boolean,
+        "locationPref": String,
+        "makerLoc": {
+            type: String,
+            optional: true
+        },
+        "cost": Number,
+        "entryDate": String,
+        "paymentDate": String,
+        "updateDate": String,
+        "staffNotes": String,
+        "staffName": String
     }, {
         collection: "Queue"
     }

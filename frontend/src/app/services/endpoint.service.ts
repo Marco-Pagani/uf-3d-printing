@@ -16,6 +16,14 @@ export class EndpointService {
 
     constructor(private http: HttpClient) { }
 
+    getFiles(id) {
+        return this.http.get(`${config.apiUrl}/jobs/${id}/files/`);
+    }
+
+    getJob(id) {
+        return this.http.get(`${config.apiUrl}/jobs/` + id);
+    }
+
     getAllJobs() {
         return this.http.get(`${config.apiUrl}/jobs/`);
     }

@@ -33,6 +33,9 @@ router.route('/:id')
   .put(q.update)
   .delete(q.delete);
 
+router.route('/:id/files')
+  .get(q.listfiles);
+
 
 router.param('id', q.findById);
 

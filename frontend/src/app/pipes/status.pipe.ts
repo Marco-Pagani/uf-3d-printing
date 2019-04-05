@@ -4,8 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 */
 @Pipe({name: 'status'})
 export class StatusPipe implements PipeTransform {
-    transform(value: number, printable: boolean): string {
-        if (printable) {
+    transform(value: number, opt: string): string {
+        if (opt === 'p') {
             switch (value) {
                 case 0:
                     return 'Pending';
@@ -22,12 +22,29 @@ export class StatusPipe implements PipeTransform {
                 case 6:
                     return 'Cancelled';
             }
+        } else if (opt === 'l') {
+            switch (value) {
+                case 0:
+                    return 'list-group-item-warning';
+                case 1:
+                    return 'list-group-item-warning';
+                case 2:
+                    return 'list-group-item-warning';
+                case 3:
+                    return 'list-group-item-success';
+                case 4:
+                    return '';
+                case 5:
+                    return 'list-group-item-success';
+                case 6:
+                    return 'list-group-item-danger';
+            }
         } else {
             switch (value) {
                 case 0:
                     return 'fa-ellipsis-h text-warning';
                 case 1:
-                    return 'fas fa-file-signature';
+                    return 'fas fa-file-signature text-warning';
                 case 2:
                     return 'fa-dollar-sign text-warning';
                 case 3:
