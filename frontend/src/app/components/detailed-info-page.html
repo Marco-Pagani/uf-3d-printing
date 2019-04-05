@@ -19,7 +19,8 @@
                         <br>
                         <a class="pl-3" *ngIf="job.affiliation.course"><b>Course:</b> {{job.affiliation.coursecode}}</a>
                     </li>
-                    <li class="list-group-item"><b>Pickup Location:</b> {{job.makerLoc}}</li>
+                    <li class="list-group-item" *ngIf="job.makerLoc"><b>Pickup Location:</b> {{job.makerLoc}}</li>
+                    <li class="list-group-item" *ngIf="!job.makerLoc"><b>Preferred Location:</b> {{job.locationPref}}</li>
                     <li class="list-group-item"><b>Can be used for publicity?</b> {{job.publicity ? 'Yes' : 'No'}}</li>
                 </ul>
             </div>
@@ -49,7 +50,7 @@
     <div class="container">
         <div class="row" *ngIf="files">
             <div class="col" *ngFor="let file of files">
-                <div class="card">
+                <div class="card" style="width:450px">
                     <div class="card-body">
                         <div class="card-title row">
                             <h5 class="col-8">{{file.name}} <a class="text-secondary">({{file.dimensions.x}}mm x {{file.dimensions.y}}mm x {{file.dimensions.z}}mm)</a></h5>
