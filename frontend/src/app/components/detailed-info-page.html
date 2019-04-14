@@ -32,8 +32,20 @@
                     <li class="list-group-item {{job.status | status:'l'}}">Job Status: {{job.status | status:'p'}}</li>
                     <li class="list-group-item"><b>Last Updated:</b> {{job.updateDate | cdate}}</li>
                     <li class="list-group-item"><b>Pricing Information:</b> <a class="{{job.cost ? '' : 'text-danger'}}">{{job.cost ? ' $' + job.cost : ' No price set'}}</a></li>
-                    <li class="list-group-item"><b>Staffer:</b> {{job.staffName}}</li>
-                    <li class="list-group-item"><b>Staff Notes:</b> {{job.staffNotes}}</li>
+                    <li class="list-group-item">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><b>Staff Name:</b></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Staffer" value="{{job.staffName}}">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><b>Staff Notes:</b> </span>
+                            </div>
+                            <textarea class="form-control" aria-label="With textarea">{{job.staffNotes}}</textarea>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

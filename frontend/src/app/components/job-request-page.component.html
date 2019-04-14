@@ -1,10 +1,9 @@
-<div class="mt-1">
+<div class="mt-1 mb-3">
   <div class="container-fluid text-center">
     <h1>Submit 3D Print</h1>
     <div class="row content">
       <div class="col-sm-6 text-left">
-        <form data-toggle="validator" >
-          <div class="form-row">
+        <form data-toggle="validator">
             <div class="form-group col-md-6">
                 <label for="inputfname">First Name</label>
                 <input type="text" class="form-control" id="fname" placeholder="First">
@@ -13,16 +12,13 @@
                 <label for="inputlname">Last Name</label>
                 <input type="text" class="form-control" id="lname" placeholder="Last">
             </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email">
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPnumber">Phone Number</label>
-                    <input type="tel" class="form-control" id="pnumber" placeholder="XXX-XXX-XXXX" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-                </div>
+            <div class="form-group col-md-6">
+                <label for="inputPnumber">Phone Number</label>
+                <input type="tel" class="form-control" id="pnumber" placeholder="XXX-XXX-XXXX" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
             </div>
             <div class="form-group col-md-6">
                 <label for="inputAffiliation">Affiliation</label>
@@ -42,7 +38,7 @@
                 <option>Education Library</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="gridCheck">
                 <label class="form-check-label" for="gridCheck">
@@ -50,15 +46,18 @@
                 </label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Complete Request</button>
+            <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-primary">Complete Request</button>
+            </div>
         </form>
         </div>
-        <div class="accordion col-6 text-left" id="accordionForm">
+        <div class="accordion col-6 text-left mb-5" id="accordionForm">
             <div class="card" *ngFor="let file of files; let i = index">
                 <div class="card-header" id="headingFiles{{i}}">
                     <h2 class="mb-0">
                         <button class="btn" type="button" data-toggle="collapse" attr.data-target="#collapse{{i}}" aria-expanded="true" attr.aria-controls="collapse{{i}}">
                             {{file.name}}
+                            <i class="fas fa-sort-down" style="font-size:28px;"></i>
                         </button>
                     </h2>
                 </div>
