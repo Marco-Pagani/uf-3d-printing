@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { EndpointService } from '../services/endpoint.service';
@@ -11,7 +11,30 @@ import { Helper } from '../helpers/helper';
 })
 
 export class DetailedInfoPageComponent implements OnInit {
+    @ViewChild('jobForm') myForm;
 
+    statuses = [{
+        value: 0,
+        name: 'Pending'
+    }, {
+        value: 1,
+        name: 'Processing'
+    }, {
+        value: 2,
+        name: 'Pending Payment'
+    }, {
+        value: 3,
+        name: 'Ready to Print'
+    }, {
+        value: 4,
+        name: 'Printing'
+    }, {
+        value: 5,
+        name: 'Complete'
+    }, {
+        value: 6,
+        name: 'Cancelled'
+    }];
     jobId;
     job;
 
@@ -40,6 +63,25 @@ export class DetailedInfoPageComponent implements OnInit {
             }
         );
         console.log(this.jobId);
+    }
+
+    submitJob() {
+        this.endPointService.updateJob(this.job);
+    }
+
+    onChangeEvent(event) {
+        console.log(event);
+    }
+
+    updateJob() {
+        console.log(this.job);
+        this.endPointService.updateJob(this.job).subscribe(
+            data => {
+                console.log(data);
+            },
+            error => {
+                console.log(error);
+            });
     }
 
 }

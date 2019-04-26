@@ -44,6 +44,10 @@ export class EndpointService {
         return this.http.get(`${config.apiUrl}/jobs/education`);
     }
 
+    updateJob(job) {
+        return this.http.put(`${config.apiUrl}/jobs/` + job._id, job);
+    }
+
     // getPendingJobs() {
     //     // Example data
     //     return [{

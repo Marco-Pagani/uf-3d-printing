@@ -93,7 +93,7 @@ exports.create = function (req, res) {
             console.log(err);
             res.status(400).send('Could not create!');
         } else {
-            res.json('Created successfully!');
+            res.status(200).send({text:'Created successfully!'});
         }
     });
   };
@@ -101,12 +101,12 @@ exports.create = function (req, res) {
   
 // Updates a queue entry
 exports.update = function (req, res) {
-    queue.update({'_id':req.request._id}, req.body, (err, result) => {
+    queue.update({'_id':req.body._id}, req.body, (err, result) => {
         if (err) {
             console.log(err);
             res.status(400).send('Could not update!');
         } else {
-            res.status(200).send('Updated!');
+            res.status(200).send({text:'Updated!'});
         }
     });
         
@@ -118,9 +118,9 @@ exports.delete = function (req, res) {
     queue.findOneAndDelete({'_id': req.request._id}, (err, result) => {
         if (err) {
             console.log(err);
-            res.status(400).send('Could not delete!');
+            res.status(400).send({error:'Could not delete!'});
         } else {
-            res.status(200).send(req.request.id + ' deleted!');
+            res.status(200).send({text:req.request.id + ' deleted!'});
         }
     });
 };

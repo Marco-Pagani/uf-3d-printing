@@ -29,21 +29,34 @@
             <h3>Job Status Information</h3>
             <div class="jumbotron">
                 <ul class="list-group" *ngIf="job">
-                    <li class="list-group-item {{job.status | status:'l'}}">Job Status: {{job.status | status:'p'}}</li>
+                    <li class="list-group-item {{job.status | status:'l'}}">Job Status:
+                        <select class="custom-select" id="status" [(ngModel)]="job.status" (change)="updateJob()">
+                            <ng-container *ngFor="let status of statuses">
+                                <option value="{{status.value}}" [selected]="job.status == status.value">{{status.name}}</option>
+                            </ng-container>
+                        </select>
+                    </li>
                     <li class="list-group-item"><b>Last Updated:</b> {{job.updateDate | cdate}}</li>
-                    <li class="list-group-item"><b>Pricing Information:</b> <a class="{{job.cost ? '' : 'text-danger'}}">{{job.cost ? ' $' + job.cost : ' No price set'}}</a></li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><b>$</b></span>
+                            </div>
+                            <input type="text" class="form-control" [(ngModel)]="job.cost" (change)="updateJob()" value="{{job.cost ? job.cost : ' 0.00'}}">
+                        </div>
+                    </li>
                     <li class="list-group-item">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><b>Staff Name:</b></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Staffer" value="{{job.staffName}}">
+                            <input type="text" class="form-control" placeholder="Staffer" value="{{job.staffName}}" [(ngModel)]="job.staffName" (change)="updateJob()">
                         </div>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><b>Staff Notes:</b> </span>
                             </div>
-                            <textarea class="form-control" aria-label="With textarea">{{job.staffNotes}}</textarea>
+                            <textarea class="form-control" aria-label="With textarea" [(ngModel)]="job.staffNotes" (change)="updateJob()">{{job.staffNotes}}</textarea>
                         </div>
                     </li>
                 </ul>
@@ -92,7 +105,7 @@
         </div>
     </div>
     <div class="pt-3 pb-5" *ngIf="job">
-        <h3>Notes</h3>
+        <h3>Client Notes</h3>
         <hr>
         <div class="container">
             <p>{{job.notes}}</p>

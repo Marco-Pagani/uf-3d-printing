@@ -5,6 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({name: 'status'})
 export class StatusPipe implements PipeTransform {
     transform(value: number, opt: string): string {
+        value = parseInt(value + '', 10);
         if (opt === 'p') {
             switch (value) {
                 case 0:

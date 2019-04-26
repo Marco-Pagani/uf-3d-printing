@@ -19,6 +19,15 @@ export class JobRequestPageComponent implements OnInit {
     details;
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     fadd = false;
+    filename = '';
+
+    fname;
+    lname;
+    email;
+    pnumber;
+    affiliation;
+    preferredLoc;
+
 
     constructor(private endpointService: EndpointService) { }
 
@@ -26,6 +35,7 @@ export class JobRequestPageComponent implements OnInit {
     }
 
     addFile() {
+        console.log(this.filename);
         console.log(this.quantity);
         console.log(this.color1);
         console.log(this.color2);
@@ -38,7 +48,7 @@ export class JobRequestPageComponent implements OnInit {
             // Add to files
             this.fadd = false;
             this.files.push({
-                name: 'File ' + this.files.length,
+                name: this.filename,
                 quantity: this.quantity,
                 color: [this.color1, this.color2, this.color3],
                 extra: this.details,
@@ -54,7 +64,18 @@ export class JobRequestPageComponent implements OnInit {
             this.color2 = undefined;
             this.color3 = undefined;
             this.details = undefined;
+            this.fname = undefined;
         }
+    }
+
+    submitRequest() {
+        // TODO
+    }
+
+    onChange(event) {
+        const files = event.srcElement.files;
+        this.fname = event.srcElement.files[0].name;
+        console.log(files);
     }
 
 }

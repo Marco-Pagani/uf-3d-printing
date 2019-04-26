@@ -4,23 +4,23 @@
     <div class="row content">
       <div class="col-sm-6 text-left">
         <form data-toggle="validator">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label for="inputfname">First Name</label>
                 <input type="text" class="form-control" id="fname" placeholder="First">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label for="inputlname">Last Name</label>
                 <input type="text" class="form-control" id="lname" placeholder="Last">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label for="inputEmail">Email</label>
                 <input type="email" class="form-control" id="email" placeholder="Email">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label for="inputPnumber">Phone Number</label>
                 <input type="tel" class="form-control" id="pnumber" placeholder="XXX-XXX-XXXX" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label for="inputAffiliation">Affiliation</label>
                 <select id="affiliation" class="form-control">
                 <option selected>Choose...</option>
@@ -29,7 +29,7 @@
                 <option>Faculty</option>
             </select>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label for="inputPreferredLoc">Maker Location</label>
                 <select id="makerLoc" class="form-control">
                 <option selected>Choose...</option>
@@ -38,16 +38,20 @@
                 <option>Education Library</option>
                 </select>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-6">
+            </div>
+            <div class="form-group float-right col-4">
+                <button type="submit" class="btn btn-primary" (onclick)="submitRequest()">Complete Request</button>
+            </div>
+            <div class="form-group col-6">
+            </div>
+            <div class="form-group float-right col-4">
                 <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="gridCheck">
                 <label class="form-check-label" for="gridCheck">
                     I agree to the Terms
                 </label>
                 </div>
-            </div>
-            <div class="form-group col-md-6">
-                <button type="submit" class="btn btn-primary">Complete Request</button>
             </div>
         </form>
         </div>
@@ -99,19 +103,26 @@
                     <div class="card-body">
                         <div class="card-title row">
                         </div>
-                        <div class="col-sm-6 text-left">
+                        <div class="col-sm-12 text-left">
                             <form name="fileSubmit">
                                 <div class="form-group">
                                     <label for="filename">File Name</label><br>
-                                    <button class="btn btn-secondary">Choose File...</button>
+                                    <div class="">
+                                        <label class="btn btn-primary btn-file">
+                                            Browse... <input type="file" (change)="onChange($event)" style="display: none;" #fileInput>
+                                        </label>
+                                        <a>
+                                            {{filename}}
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="form-group ">
+                                <div class="form-group">
                                     <label for="quantitySelect">Quantity<a class="text-danger" *ngIf="fadd && !quantity">*</a></label>
                                     <select id="quantity" [(ngModel)]="quantity" name="quantity" class="form-control col-md-4" [class.border-danger]="fadd && !quantity" required>
                                         <option *ngFor="let n of numbers" [value]="n">{{n}}</option>
                                     </select>
                                 </div>
-                                <div class="form-group ">
+                                <div class="form-group">
                                     <label for="color">First Color Choice<a class="text-danger" *ngIf="fadd && !color1">*</a></label>
                                     <select id="color1" [(ngModel)]="color1" name="color1" class="form-control col-4" [class.border-danger]="fadd && !color1" required>
                                         <option [value]="'red'">Red</option>
@@ -119,7 +130,7 @@
                                         <option [value]="'blue'">Blue</option>
                                     </select>
                                 </div>
-                                <div class="form-group ">
+                                <div class="form-group">
                                     <label for="color">Second Color Choice<a class="text-danger" *ngIf="fadd && !color2">*</a></label>
                                     <select id="color2" [(ngModel)]="color2" name="color2" class="form-control col-4" [class.border-danger]="fadd && !color2" required>
                                         <option [value]="'red'">Red</option>
@@ -127,7 +138,7 @@
                                         <option [value]="'blue'">Blue</option>
                                     </select>
                                 </div>
-                                <div class="form-group ">
+                                <div class="form-group">
                                     <label for="color">Third Color Choice<a class="text-danger" *ngIf="fadd && !color3">*</a></label>
                                     <select id="color3" [(ngModel)]="color3" name="color3" class="form-control col-4" [class.border-danger]="fadd && !color3" required>
                                         <option [value]="'red'">Red</option>
