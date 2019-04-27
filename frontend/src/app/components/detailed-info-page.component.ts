@@ -65,10 +65,6 @@ export class DetailedInfoPageComponent implements OnInit {
         console.log(this.jobId);
     }
 
-    submitJob() {
-        this.endPointService.updateJob(this.job);
-    }
-
     onChangeEvent(event) {
         console.log(event);
     }
@@ -78,6 +74,14 @@ export class DetailedInfoPageComponent implements OnInit {
         this.endPointService.updateJob(this.job).subscribe(
             data => {
                 console.log(data);
+                this.endPointService.getJob(this.jobId).subscribe(
+                    idata => {
+                        this.job = idata;
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                );
             },
             error => {
                 console.log(error);

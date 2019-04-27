@@ -23,17 +23,19 @@ exports.list = function(req, res) {
 exports.listfiles = async function(req, res) {
     request = req.request.toObject(); 
     files = request.files;
-    files = await Promise.all(files.map((ele) => {
-        return mongoose.Types.ObjectId(ele);
-    }));
-    file.find({ '_id': { $in: files } }).exec((err, docs) => {
-        if(err) {
-            console.log(err);
-            res.status(400).send(err);
-        } else {
-            res.json(docs);
-        }
-    });
+    if(files.length > 0 && files != "[]") {
+        files = await Promise.all(files.map((ele) => {
+            return mongoose.Types.ObjectId(ele);
+        }));
+        file.find({ '_id': { $in: files } }).exec((err, docs) => {
+            if(err) {
+                console.log(err);
+                res.status(400).send(err);
+            } else {
+                res.json(docs);
+            }
+        });
+    }
 }
 
 // Returns all queue data that has not been picked up by employee
@@ -101,6 +103,8 @@ exports.create = function (req, res) {
   
 // Updates a queue entry
 exports.update = function (req, res) {
+    const today = new Date();
+    req.body.updateDate = `${today.getUTCFullYear()}-0${today.getMonth() + 1}-${today.getDay() < 10 ? '0' + today.getDay() : today.getDay()} ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
     queue.update({'_id':req.body._id}, req.body, (err, result) => {
         if (err) {
             console.log(err);
